@@ -48,6 +48,36 @@ Create database:
 
 ```sql
 CREATE DATABASE bnr_exam;
+
+-- Give your application user ownership
+ALTER DATABASE bnr_exam OWNER TO db_user;
+
+-- Connect to the app database
+\c bnr_exam
+
+-- Grant schema permissions
+GRANT ALL PRIVILEGES ON DATABASE bnr_exam TO db_user;
+GRANT USAGE, CREATE ON SCHEMA public TO db_user;
+GRANT ALL ON SCHEMA public TO db_user;
+
+-- Grant table/sequence permissions
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO db_user;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO db_user;
+
+-- Future objects created in public schema
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+GRANT ALL ON TABLES TO db_user;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+GRANT ALL ON SEQUENCES TO db_user;
+
+If your PostgreSQL uses the default postgres user, set:
+
+username: postgres
+password: your_password
+
+If you installed PostgreSQL using Homebrew on macOS, your username may be your macOS username.
+Update application.yml accordingly.
 ```
 
 Update `src/main/resources/application.yml`: ddl-auto: validate to ddl-auto: none
@@ -57,7 +87,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/bnr_exam
     username: db_user
-    password: your_password
+    password: Inyamibwa12@
 
   jpa:
     hibernate:
