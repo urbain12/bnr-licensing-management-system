@@ -1,0 +1,16 @@
+package com.bnr.backend.common.enums;
+
+public enum PermissionType {
+    CREATE_APPLICATION,
+    VIEW_OWN_APPLICATION,
+
+    REVIEW_APPLICATION,
+    REQUEST_INFORMATION,
+    VIEW_ASSIGNED_APPLICATIONS,
+
+    APPROVE_APPLICATION,
+    REJECT_APPLICATION,
+
+    MANAGE_USERS,
+    VIEW_ALL
+}

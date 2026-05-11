@@ -1,0 +1,21 @@
+# Mac
+.DS_Store
+
+# IntelliJ
+.idea/
+*.iml
+
+# VSCode
+.vscode/
+
+# Backend
+backend/target/
+backend/uploads/
+backend/*.log
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Env
+.env
