@@ -22,6 +22,7 @@
       <input
         hidden
         type="file"
+        [attr.aria-label]="doc.label"
         accept=".pdf,.doc,.docx"
         (change)="onFileSelected($event, doc)"
       />
@@ -47,6 +48,7 @@
         type="button"
         (click)="removeFile(doc)"
       >
+        <mat-icon>delete</mat-icon>
         Remove
       </button>
     </div>

@@ -1,10 +1,16 @@
-<h1 class="page-title">Dashboard</h1>
+<div class="page-heading">
+  <div>
+    <h1 class="page-title">Dashboard</h1>
+    <p>Track licensing workloads and decision queues.</p>
+  </div>
+</div>
 
-<mat-card *ngIf="loading">
-  Loading dashboard...
+<mat-card class="state-card" *ngIf="loading">
+  <mat-spinner diameter="28"></mat-spinner>
+  <span>Loading dashboard...</span>
 </mat-card>
 
-<mat-card *ngIf="error">
+<mat-card class="state-card" *ngIf="error">
   <p class="error-text">{{ error }}</p>
   <button mat-button color="primary" (click)="loadDashboard()">
     Retry
@@ -12,42 +18,48 @@
 </mat-card>
 
 <div class="dashboard-grid" *ngIf="!loading && !error">
-  <mat-card>
+  <mat-card class="metric-card primary">
+    <mat-icon>apps</mat-icon>
     <mat-card-title>Total Applications</mat-card-title>
     <mat-card-content>
       <h2>{{ total }}</h2>
     </mat-card-content>
   </mat-card>
 
-  <mat-card>
+  <mat-card class="metric-card">
+    <mat-icon>send</mat-icon>
     <mat-card-title>Submitted</mat-card-title>
     <mat-card-content>
       <h2>{{ countByStatus('SUBMITTED') }}</h2>
     </mat-card-content>
   </mat-card>
 
-  <mat-card>
+  <mat-card class="metric-card">
+    <mat-icon>rate_review</mat-icon>
     <mat-card-title>Under Review</mat-card-title>
     <mat-card-content>
       <h2>{{ countByStatus('UNDER_REVIEW') }}</h2>
     </mat-card-content>
   </mat-card>
 
-  <mat-card>
+  <mat-card class="metric-card">
+    <mat-icon>verified</mat-icon>
     <mat-card-title>Awaiting Approval</mat-card-title>
     <mat-card-content>
       <h2>{{ countByStatus('REVIEW_COMPLETED') }}</h2>
     </mat-card-content>
   </mat-card>
 
-  <mat-card>
+  <mat-card class="metric-card success">
+    <mat-icon>check_circle</mat-icon>
     <mat-card-title>Approved</mat-card-title>
     <mat-card-content>
       <h2>{{ countByStatus('APPROVED') }}</h2>
     </mat-card-content>
   </mat-card>
 
-  <mat-card>
+  <mat-card class="metric-card danger">
+    <mat-icon>cancel</mat-icon>
     <mat-card-title>Rejected</mat-card-title>
     <mat-card-content>
       <h2>{{ countByStatus('REJECTED') }}</h2>

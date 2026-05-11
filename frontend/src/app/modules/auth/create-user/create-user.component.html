@@ -1,4 +1,7 @@
-<h1 class="page-title">Create User</h1>
+<div class="page-heading">
+  <h1 class="page-title">Create User</h1>
+  <p>Add a portal user and assign their access role.</p>
+</div>
 
 <mat-card>
   <form class="form-grid" [formGroup]="form" (ngSubmit)="submit()">
@@ -41,6 +44,7 @@
         type="submit"
         [disabled]="loading"
       >
+        <mat-icon *ngIf="!loading">person_add</mat-icon>
         <span *ngIf="!loading">Create User</span>
         <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
       </button>

@@ -1,11 +1,73 @@
+.app-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  gap: 12px;
+  min-height: 64px;
+  background: linear-gradient(90deg, var(--app-primary-dark), var(--app-primary));
+  box-shadow: 0 8px 24px rgba(9, 68, 90, 0.18);
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.brand-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
 .layout-container {
   height: calc(100vh - 64px);
+  background: var(--app-bg);
+}
+
+.app-sidenav {
+  width: 268px;
+  border-right: 1px solid var(--app-border);
+  background: #fbfdff;
 }
 
 .page-container {
-  padding: 24px;
+  width: min(1220px, 100%);
+  margin: 0 auto;
+  padding: 32px;
 }
 
 .spacer {
   flex: 1;
+}
+
+.logout-button {
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 8px;
+}
+
+.logout-button mat-icon {
+  margin-right: 6px;
+}
+
+@media (max-width: 760px) {
+  .brand-title {
+    font-size: 16px;
+  }
+
+  .app-sidenav {
+    width: 220px;
+  }
+
+  .page-container {
+    padding: 20px 14px;
+  }
 }

@@ -1,9 +1,12 @@
-<!-- application-create.component.html -->
-<h1 class="page-title">New License Application</h1>
+<div class="page-heading">
+  <h1 class="page-title">New License Application</h1>
+  <p>Submit institution details and required supporting documents.</p>
+</div>
 
 <form class="application-form" [formGroup]="form" (ngSubmit)="submit()">
   <mat-card>
     <mat-card-header>
+      <mat-icon mat-card-avatar>business</mat-icon>
       <mat-card-title>Institution Information</mat-card-title>
     </mat-card-header>
 
@@ -37,6 +40,7 @@
 
   <mat-card>
     <mat-card-header>
+      <mat-icon mat-card-avatar>attach_file</mat-icon>
       <mat-card-title>Supporting Documents</mat-card-title>
     </mat-card-header>
 

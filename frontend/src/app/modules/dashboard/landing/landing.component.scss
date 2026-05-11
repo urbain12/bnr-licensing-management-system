@@ -1,11 +1,74 @@
-.page-title {
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   margin-bottom: 24px;
+}
+
+.page-title {
+  margin-bottom: 6px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.page-heading p {
+  margin-bottom: 0;
+  color: var(--app-muted);
 }
 
 .dashboard-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
 
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+.metric-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 154px;
+  padding: 20px;
+}
 
-  gap: 16px;
+.metric-card mat-icon {
+  color: var(--app-primary);
+  background: #e6f4f8;
+  border-radius: 8px;
+  padding: 8px;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 18px;
+}
+
+.metric-card mat-card-title {
+  color: var(--app-muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.metric-card h2 {
+  margin: 10px 0 0;
+  color: var(--app-text);
+  font-size: 38px;
+  font-weight: 800;
+}
+
+.metric-card.primary {
+  border-color: #9bd5e4;
+}
+
+.metric-card.success mat-icon {
+  color: var(--app-success);
+  background: #e7f8ef;
+}
+
+.metric-card.danger mat-icon {
+  color: var(--app-danger);
+  background: #fff1f0;
+}
+
+.state-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
 }

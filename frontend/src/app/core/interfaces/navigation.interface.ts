@@ -21,7 +21,7 @@ export const navigationMenu: NavigationMenuItem[] = [
   {
     label: 'Create User',
     icon: 'person_add',
-    route: '/auth/create/user/new',
+    route: '/users/new',
     permission: 'MANAGE_USERS'
   }
 ];

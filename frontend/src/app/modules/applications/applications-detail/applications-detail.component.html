@@ -1,6 +1,9 @@
-<mat-card *ngIf="loading"> Loading application... </mat-card>
+<mat-card class="state-card" *ngIf="loading">
+  <mat-spinner diameter="28"></mat-spinner>
+  <span>Loading application...</span>
+</mat-card>
 
-<mat-card *ngIf="error">
+<mat-card class="state-card" *ngIf="error">
   <p class="error-text">{{ error }}</p>
 </mat-card>
 
@@ -11,13 +14,14 @@
       <p class="subtitle">{{ application.name }}</p>
     </div>
 
-    <mat-chip>
+    <mat-chip class="status-chip">
       {{ application.status }}
     </mat-chip>
   </div>
 
   <mat-card>
     <mat-card-header>
+      <mat-icon mat-card-avatar>summarize</mat-icon>
       <mat-card-title>Application Summary</mat-card-title>
     </mat-card-header>
 
@@ -48,11 +52,12 @@
 
   <mat-card>
     <mat-card-header>
+      <mat-icon mat-card-avatar>folder_open</mat-icon>
       <mat-card-title>Uploaded Documents</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
-      <div *ngIf="documents.length === 0">No documents found.</div>
+      <div class="empty-note" *ngIf="documents.length === 0">No documents found.</div>
 
       <div class="document-item" *ngFor="let doc of documents">
         <div class="document-info">
@@ -80,6 +85,7 @@
     *ngIf="canReview() || canRequestInfo() || canApprove() || canReject()"
   >
     <mat-card-header>
+      <mat-icon mat-card-avatar>task_alt</mat-icon>
       <mat-card-title>Workflow Action</mat-card-title>
     </mat-card-header>
 
@@ -145,11 +151,12 @@
 
   <mat-card  *ngIf="canReview() || canRequestInfo() || canApprove() || canReject()">
     <mat-card-header>
+      <mat-icon mat-card-avatar>history</mat-icon>
       <mat-card-title>Audit Trail</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
-      <div *ngIf="auditEntries.length === 0">No audit records available.</div>
+      <div class="empty-note" *ngIf="auditEntries.length === 0">No audit records available.</div>
 
       <div class="audit-item" *ngFor="let entry of auditEntries">
         <div class="audit-line"></div>
@@ -164,7 +171,7 @@
           </div>
 
           <div class="audit-state">
-            {{ entry.previousState }} → {{ entry.newState }}
+            {{ entry.previousState }} to {{ entry.newState }}
           </div>
 
           <div class="audit-comment" *ngIf="entry.comment">

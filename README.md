@@ -63,14 +63,24 @@ Open:
 http://localhost:4200
 ```
 
-## Default Users
+## Create Test Users
 
-| Role | Email | Password |
-|---|---|---|
-| ADMIN | admin@bnr.rw | admin123 |
-| APPLICANT | applicant@bnr.rw | applicant123 |
-| REVIEWER | reviewer@bnr.rw | reviewer123 |
-| APPROVER | approver@bnr.rw | approver123 |
+First create admin using /api/setup/admin, then create applicant/reviewer/approver from the Users screen or /api/users.
+
+If users do not exist yet, create the first admin using:
+
+```http
+POST /api/setup/admin
+
+user Scalar : http://localhost:8080/scalar#tag/setup-controller/POST/api/setup/admin
+```
+
+Then login as admin and create other users with:
+
+```http
+POST /api/users
+
+```|
 
 ## End-to-End Test
 

@@ -1,13 +1,161 @@
 .header {
   display: flex;
-
   justify-content: space-between;
+  align-items: flex-end;
+  gap: 18px;
+  margin-bottom: 22px;
+}
 
+.header h1 {
+  margin-bottom: 6px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.header p {
+  margin-bottom: 0;
+  color: var(--app-muted);
+}
+
+.header button mat-icon {
+  margin-right: 6px;
+}
+
+.filters-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
-
+  gap: 0;
+  width: fit-content;
+  max-width: 100%;
   margin-bottom: 20px;
+  padding: 4px;
+  overflow-x: auto;
+  border-radius: 8px !important;
+  background: #e9f1f7;
+  box-shadow: none !important;
+}
+
+.filters-card button {
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 122px;
+  border-radius: 6px;
+  color: var(--app-primary-dark);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.filters-card button + button {
+  margin-left: 2px;
+}
+
+.filters-card button.active-filter {
+  background: #fff;
+  color: var(--app-primary-dark);
+  box-shadow: 0 4px 12px rgba(21, 40, 63, 0.08);
+}
+
+.filters-card button.active-filter::after {
+  position: absolute;
+  right: 18px;
+  bottom: 4px;
+  left: 18px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--app-primary);
+  content: "";
+}
+
+.table-card {
+  overflow: hidden;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 0;
+}
+
+.table-header h2 {
+  margin-bottom: 4px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.table-header p {
+  margin-bottom: 0;
+  color: var(--app-muted);
+  font-size: 13px;
+}
+
+.table-scroll {
+  overflow-x: auto;
 }
 
 .full-width {
   width: 100%;
+}
+
+th.mat-mdc-header-cell {
+  color: var(--app-muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+td.mat-mdc-cell {
+  color: var(--app-text);
+}
+
+tr.mat-mdc-row:hover {
+  background: #f7fbfd;
+}
+
+.state-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+}
+
+.empty-card {
+  display: grid;
+  place-items: center;
+  padding: 46px 20px;
+  text-align: center;
+}
+
+.empty-card mat-icon {
+  width: 52px;
+  height: 52px;
+  color: var(--app-muted);
+  font-size: 52px;
+}
+
+.empty-card h2 {
+  margin: 14px 0 6px;
+  font-size: 20px;
+}
+
+.empty-card p {
+  margin-bottom: 0;
+  color: var(--app-muted);
+}
+
+@media (max-width: 720px) {
+  .header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .filters-card {
+    width: 100%;
+  }
+
+  .filters-card button {
+    min-width: max-content;
+  }
 }

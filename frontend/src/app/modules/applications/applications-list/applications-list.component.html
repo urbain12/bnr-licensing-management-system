@@ -10,40 +10,52 @@
     routerLink="/applications/new"
     *ngIf="auth.hasPermission('CREATE_APPLICATION')"
   >
+    <mat-icon>add</mat-icon>
     New Application
   </button>
 </div>
 
-<mat-card class="filters-card">
-  <button mat-button (click)="setView('ALL')">
+<mat-card class="filters-card" role="tablist" aria-label="Application queue filters">
+  <button mat-button (click)="setView('ALL')" [class.active-filter]="viewMode === 'ALL'">
     All
   </button>
 
-  <button mat-button (click)="setView('REVIEW')">
+  <button mat-button (click)="setView('REVIEW')" [class.active-filter]="viewMode === 'REVIEW'">
     Review Queue
   </button>
 
-  <button mat-button (click)="setView('APPROVAL')">
+  <button mat-button (click)="setView('APPROVAL')" [class.active-filter]="viewMode === 'APPROVAL'">
     Approval Queue
   </button>
 </mat-card>
 
-<mat-card *ngIf="loading">
-  Loading applications...
+<mat-card class="state-card" *ngIf="loading">
+  <mat-spinner diameter="28"></mat-spinner>
+  <span>Loading applications...</span>
 </mat-card>
 
-<mat-card *ngIf="error">
+<mat-card class="state-card" *ngIf="error">
   <p class="error-text">{{ error }}</p>
   <button mat-button color="primary" (click)="loadApplications()">
     Retry
   </button>
 </mat-card>
 
-<mat-card *ngIf="!loading && !error && filteredApplications.length === 0">
-  No applications found.
+<mat-card class="empty-card" *ngIf="!loading && !error && filteredApplications.length === 0">
+  <mat-icon>folder_off</mat-icon>
+  <h2>No applications found</h2>
+  <p>Applications matching this queue will appear here.</p>
 </mat-card>
 
-<mat-card *ngIf="!loading && !error && filteredApplications.length > 0">
+<mat-card class="table-card" *ngIf="!loading && !error && filteredApplications.length > 0">
+  <div class="table-header">
+    <div>
+      <h2>Application Queue</h2>
+      <p>{{ filteredApplications.length }} record(s)</p>
+    </div>
+  </div>
+
+  <div class="table-scroll">
   <table
     mat-table
     [dataSource]="filteredApplications"
@@ -87,6 +99,7 @@
           color="primary"
           [routerLink]="['/applications', app.id]"
         >
+          <mat-icon>visibility</mat-icon>
           View
         </button>
       </td>
@@ -95,4 +108,5 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+  </div>
 </mat-card>

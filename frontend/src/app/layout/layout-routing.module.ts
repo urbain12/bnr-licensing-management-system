@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ShellComponent } from './shell/shell.component';
 import { AuthGuard } from '../core/guards/auth.guard';
+import { PermissionGuard } from '../core/guards/permission.guard';
+import { CreateUserComponent } from '../modules/auth/create-user/create-user.component';
 
 const routes: Routes = [
   {
@@ -25,6 +27,14 @@ const routes: Routes = [
         loadChildren: () =>
           import('../modules/applications/applications.module')
             .then(m => m.ApplicationsModule)
+      },
+      {
+        path: 'users/new',
+        component: CreateUserComponent,
+        canActivate: [PermissionGuard],
+        data: {
+          permissions: ['MANAGE_USERS']
+        }
       },
     ]
   }

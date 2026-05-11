@@ -1,6 +1,8 @@
 <div class="login-container">
   <mat-card class="login-card">
+    <div class="login-brand">BNR</div>
     <h2>Bank Licensing Portal</h2>
+    <p>Sign in to manage licensing applications.</p>
 
     <form (ngSubmit)="login()">
       <mat-form-field appearance="outline" class="full-width">
@@ -36,6 +38,7 @@
         type="submit"
         [disabled]="loading"
       >
+        <mat-icon *ngIf="!loading">login</mat-icon>
         <span *ngIf="!loading"> Login </span>
 
         <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>

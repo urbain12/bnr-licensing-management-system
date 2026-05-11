@@ -1,4 +1,95 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global UI foundation */
+
+:root {
+  --app-bg: #f4f7fb;
+  --app-surface: #ffffff;
+  --app-surface-muted: #eef3f8;
+  --app-border: #d7e0ea;
+  --app-text: #172033;
+  --app-muted: #667085;
+  --app-primary: #0f5f7a;
+  --app-primary-dark: #09445a;
+  --app-accent: #b98112;
+  --app-danger: #b42318;
+  --app-success: #087443;
+  --app-shadow: 0 14px 36px rgba(21, 40, 63, 0.08);
+}
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: var(--app-bg);
+  color: var(--app-text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+.mat-mdc-card-title,
+.mat-mdc-card-subtitle {
+  color: var(--app-text);
+}
+
+.mat-mdc-card {
+  border: 1px solid var(--app-border);
+  border-radius: 8px !important;
+  box-shadow: var(--app-shadow) !important;
+}
+
+.mat-mdc-raised-button:not(:disabled) {
+  color: #fff !important;
+}
+
+.mat-mdc-raised-button:not(:disabled) .mat-icon,
+.mat-mdc-raised-button:not(:disabled) .mdc-button__label {
+  color: #fff !important;
+}
+
+.mat-mdc-raised-button.mat-primary:not(:disabled) {
+  background-color: var(--app-primary) !important;
+}
+
+.mat-mdc-raised-button.mat-accent:not(:disabled) {
+  background-color: var(--app-accent) !important;
+}
+
+.mat-mdc-raised-button.mat-warn:not(:disabled) {
+  background-color: var(--app-danger) !important;
+}
+
+.mat-mdc-button.mat-primary {
+  color: var(--app-primary) !important;
+}
+
+.mat-mdc-chip {
+  border-radius: 999px !important;
+  background: var(--app-surface-muted) !important;
+  color: var(--app-primary-dark) !important;
+  font-weight: 600;
+}
+
+.error-text,
+.error-message {
+  color: var(--app-danger);
+  background: #fff1f0;
+  border: 1px solid #ffd2cc;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.success-text {
+  color: var(--app-success);
+  background: #edfdf5;
+  border: 1px solid #bdebd2;
+  border-radius: 8px;
+  padding: 12px 14px;
+}

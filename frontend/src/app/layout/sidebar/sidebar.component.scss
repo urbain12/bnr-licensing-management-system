@@ -1,0 +1,34 @@
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 12px;
+}
+
+.sidebar-section {
+  padding: 0 12px 8px;
+  color: var(--app-muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-item {
+  border-radius: 8px;
+  color: var(--app-text);
+}
+
+.nav-item mat-icon {
+  color: var(--app-muted);
+}
+
+.nav-item.active {
+  background: #e6f4f8;
+  color: var(--app-primary-dark);
+  font-weight: 700;
+}
+
+.nav-item.active mat-icon {
+  color: var(--app-primary);
+}

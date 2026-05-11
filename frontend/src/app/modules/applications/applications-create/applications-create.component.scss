@@ -1,7 +1,28 @@
+.page-heading {
+  margin-bottom: 24px;
+}
+
+.page-heading p {
+  margin-bottom: 0;
+  color: var(--app-muted);
+}
+
 .application-form {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+.application-form mat-card {
+  padding: 6px;
+}
+
+.application-form mat-card-header mat-icon {
+  display: grid;
+  place-items: center;
+  background: #e6f4f8;
+  color: var(--app-primary);
+  border-radius: 8px;
 }
 
 .form-grid {
@@ -21,5 +42,21 @@
 }
 
 .page-title {
-  margin-bottom: 24px;
+  margin-bottom: 6px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+@media (max-width: 720px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: span 1;
+  }
+
+  .actions button {
+    width: 100%;
+  }
 }

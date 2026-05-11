@@ -1,16 +1,18 @@
-<mat-toolbar color="primary">
-  <span>BNR Licensing Portal</span>
+<mat-toolbar color="primary" class="app-toolbar">
+  <div class="brand-mark">BNR</div>
+  <span class="brand-title">Licensing Portal</span>
 
   <span class="spacer"></span>
 
-  <button mat-button (click)="logout()">
+  <button mat-button class="logout-button" (click)="logout()">
+    <mat-icon>logout</mat-icon>
     Logout
   </button>
 </mat-toolbar>
 
 <mat-sidenav-container class="layout-container">
 
-  <mat-sidenav mode="side" opened>
+  <mat-sidenav mode="side" opened class="app-sidenav">
     <app-sidebar></app-sidebar>
   </mat-sidenav>
 
