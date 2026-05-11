@@ -49,7 +49,13 @@ Create database:
 ```sql
 CREATE DATABASE bnr_exam;
 
-Update database credentials in application.yml if needed
+If your PostgreSQL uses the default postgres user, set:
+
+username: postgres
+password: your_password
+
+If you installed PostgreSQL using Homebrew on macOS, your username may be your macOS username.
+Update application.yml accordingly.
 ```
 
 Update `src/main/resources/application.yml`: ddl-auto: validate to ddl-auto: none
