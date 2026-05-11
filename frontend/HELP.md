@@ -98,14 +98,9 @@ The HTTP interceptor attaches:
 Authorization: Bearer <token>
 ```
 
-## Default Test Users
+## Create Test Users
 
-| Role | Email | Password |
-|---|---|---|
-| ADMIN | admin@bnr.rw | admin123 |
-| APPLICANT | applicant@bnr.rw | applicant123 |
-| REVIEWER | reviewer@bnr.rw | reviewer123 |
-| APPROVER | approver@bnr.rw | approver123 |
+First create admin using /api/setup/admin, then create applicant/reviewer/approver from the Users screen or /api/users.
 
 ## Frontend Test Flow
 

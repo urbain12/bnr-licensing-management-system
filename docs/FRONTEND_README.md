@@ -103,9 +103,9 @@ Authorization: Bearer <token>
 | Role | Email | Password |
 |---|---|---|
 | ADMIN | admin@bnr.rw | admin123 |
-| APPLICANT | applicant@bnr.rw | applicant123 |
-| REVIEWER | reviewer@bnr.rw | reviewer123 |
-| APPROVER | approver@bnr.rw | approver123 |
+| APPLICANT | applicant@bnr.rw | password123 |
+| REVIEWER | reviewer@bnr.rw | password123 |
+| APPROVER | approver@bnr.rw | password123 |
 
 ## Frontend Test Flow
 

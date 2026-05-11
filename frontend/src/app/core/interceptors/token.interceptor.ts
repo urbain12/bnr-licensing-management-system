@@ -22,6 +22,10 @@ export class tokenInterceptor implements HttpInterceptor {
 
     const token = localStorage.getItem('token');
 
+    if (request.url.includes('/api/auth/login')) {
+      return next.handle(request);
+    }
+
     if (token) {
       request = request.clone({
         setHeaders: {
@@ -34,7 +38,7 @@ export class tokenInterceptor implements HttpInterceptor {
 
       catchError((error: HttpErrorResponse) => {
 
-        if (error.status === 401 || error.status === 403) {
+        if (error.status === 401) {
           this.router.navigate(['/auth/login']);
         }
 

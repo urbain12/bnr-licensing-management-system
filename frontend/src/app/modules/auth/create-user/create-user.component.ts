@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 // create-user.component.ts
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -30,7 +31,8 @@ export class CreateUserComponent {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private route: Router
   ) {}
 
   submit(): void {
@@ -53,6 +55,7 @@ export class CreateUserComponent {
       next: () => {
         this.success = 'User created successfully.';
         this.form.reset();
+        this.route.navigateByUrl('/applications');
       },
       error: (error) => {
         this.error =

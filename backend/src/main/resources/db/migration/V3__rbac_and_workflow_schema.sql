@@ -1,3 +1,5 @@
+ALTER TABLE users
+DROP COLUMN IF EXISTS role;
 
 CREATE TABLE roles (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
