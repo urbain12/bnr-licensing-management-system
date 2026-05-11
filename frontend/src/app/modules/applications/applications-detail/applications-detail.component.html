@@ -1,0 +1,177 @@
+<mat-card *ngIf="loading"> Loading application... </mat-card>
+
+<mat-card *ngIf="error">
+  <p class="error-text">{{ error }}</p>
+</mat-card>
+
+<div *ngIf="!loading && application">
+  <div class="page-header">
+    <div>
+      <h1>{{ application.referenceNumber }}</h1>
+      <p class="subtitle">{{ application.name }}</p>
+    </div>
+
+    <mat-chip>
+      {{ application.status }}
+    </mat-chip>
+  </div>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Application Summary</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="summary-grid">
+        <div>
+          <label>Institution</label>
+          <p>{{ application.name }}</p>
+        </div>
+
+        <div>
+          <label>License Type</label>
+          <p>{{ application.licenseType }}</p>
+        </div>
+
+        <div>
+          <label>Reference Number</label>
+          <p>{{ application.referenceNumber }}</p>
+        </div>
+
+        <div>
+          <label>Status</label>
+          <p>{{ application.status }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Uploaded Documents</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div *ngIf="documents.length === 0">No documents found.</div>
+
+      <div class="document-item" *ngFor="let doc of documents">
+        <div class="document-info">
+          <mat-icon>description</mat-icon>
+
+          <div>
+            <div class="document-title">
+              {{ doc.documentType }}
+            </div>
+
+            <div class="document-meta">
+              {{ doc.filename }} • Version {{ doc.versionNumber }}
+            </div>
+
+            <div class="document-meta">
+              {{ doc.uploadedBy }} • {{ doc.uploadedAt | date: "medium" }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card
+    *ngIf="canReview() || canRequestInfo() || canApprove() || canReject()"
+  >
+    <mat-card-header>
+      <mat-card-title>Workflow Action</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Comment / Justification</mat-label>
+        <textarea matInput rows="3" [(ngModel)]="comment"></textarea>
+      </mat-form-field>
+
+      <div class="actions-container">
+        <button
+          mat-raised-button
+          color="primary"
+          *ngIf="canReview() && application.status === 'SUBMITTED'"
+          [disabled]="actionLoading"
+          (click)="startReview()"
+        >
+          Start Review
+        </button>
+
+        <button
+          mat-raised-button
+          color="primary"
+          *ngIf="canReview() && application.status === 'UNDER_REVIEW'"
+          [disabled]="actionLoading"
+          (click)="completeReview()"
+        >
+          Complete Review
+        </button>
+
+        <button
+          mat-raised-button
+          color="accent"
+          *ngIf="canRequestInfo() && application.status === 'UNDER_REVIEW'"
+          [disabled]="actionLoading"
+          (click)="requestInfo()"
+        >
+          Request Info
+        </button>
+
+        <button
+          mat-raised-button
+          color="primary"
+          *ngIf="canApprove() && application.status === 'REVIEW_COMPLETED'"
+          [disabled]="actionLoading"
+          (click)="approve()"
+        >
+          Approve
+        </button>
+
+        <button
+          mat-raised-button
+          color="warn"
+          *ngIf="canReject() && application.status === 'REVIEW_COMPLETED'"
+          [disabled]="actionLoading"
+          (click)="reject()"
+        >
+          Reject
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card  *ngIf="canReview() || canRequestInfo() || canApprove() || canReject()">
+    <mat-card-header>
+      <mat-card-title>Audit Trail</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div *ngIf="auditEntries.length === 0">No audit records available.</div>
+
+      <div class="audit-item" *ngFor="let entry of auditEntries">
+        <div class="audit-line"></div>
+
+        <div class="audit-content">
+          <div class="audit-action">
+            {{ entry.action }}
+          </div>
+
+          <div class="audit-meta">
+            {{ entry.actor }} • {{ entry.timestamp | date: "medium" }}
+          </div>
+
+          <div class="audit-state">
+            {{ entry.previousState }} → {{ entry.newState }}
+          </div>
+
+          <div class="audit-comment" *ngIf="entry.comment">
+            {{ entry.comment }}
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

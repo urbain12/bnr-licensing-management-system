@@ -1,0 +1,58 @@
+<div class="documents-section">
+  <div
+    class="document-card"
+    *ngFor="let doc of documents"
+  >
+    <div class="document-header">
+      <div>
+        <h3>{{ doc.label }}</h3>
+        <span class="required-tag">Required</span>
+      </div>
+
+      <span class="uploaded-status" *ngIf="doc.file">
+        Uploaded
+      </span>
+    </div>
+
+    <label
+      class="dropzone"
+      (drop)="onDrop($event, doc)"
+      (dragover)="onDragOver($event)"
+    >
+      <input
+        hidden
+        type="file"
+        accept=".pdf,.doc,.docx"
+        (change)="onFileSelected($event, doc)"
+      />
+
+      <div class="dropzone-content">
+        <mat-icon>upload_file</mat-icon>
+        <p>Drag & drop or click to upload</p>
+        <small>PDF/DOC/DOCX • Max 5MB</small>
+      </div>
+    </label>
+
+    <div class="uploaded-file" *ngIf="doc.file">
+      <mat-icon>description</mat-icon>
+
+      <div>
+        <div class="file-name">{{ doc.file.name }}</div>
+        <div class="file-meta">{{ getFileSize(doc.file.size) }}</div>
+      </div>
+
+      <button
+        mat-button
+        color="warn"
+        type="button"
+        (click)="removeFile(doc)"
+      >
+        Remove
+      </button>
+    </div>
+
+    <p class="error-text" *ngIf="doc.error">
+      {{ doc.error }}
+    </p>
+  </div>
+</div>

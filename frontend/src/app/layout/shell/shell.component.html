@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <span>BNR Licensing Portal</span>
+
+  <span class="spacer"></span>
+
+  <button mat-button (click)="logout()">
+    Logout
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="layout-container">
+
+  <mat-sidenav mode="side" opened>
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="page-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

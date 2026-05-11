@@ -1,0 +1,56 @@
+<h1 class="page-title">Dashboard</h1>
+
+<mat-card *ngIf="loading">
+  Loading dashboard...
+</mat-card>
+
+<mat-card *ngIf="error">
+  <p class="error-text">{{ error }}</p>
+  <button mat-button color="primary" (click)="loadDashboard()">
+    Retry
+  </button>
+</mat-card>
+
+<div class="dashboard-grid" *ngIf="!loading && !error">
+  <mat-card>
+    <mat-card-title>Total Applications</mat-card-title>
+    <mat-card-content>
+      <h2>{{ total }}</h2>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Submitted</mat-card-title>
+    <mat-card-content>
+      <h2>{{ countByStatus('SUBMITTED') }}</h2>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Under Review</mat-card-title>
+    <mat-card-content>
+      <h2>{{ countByStatus('UNDER_REVIEW') }}</h2>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Awaiting Approval</mat-card-title>
+    <mat-card-content>
+      <h2>{{ countByStatus('REVIEW_COMPLETED') }}</h2>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Approved</mat-card-title>
+    <mat-card-content>
+      <h2>{{ countByStatus('APPROVED') }}</h2>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Rejected</mat-card-title>
+    <mat-card-content>
+      <h2>{{ countByStatus('REJECTED') }}</h2>
+    </mat-card-content>
+  </mat-card>
+</div>

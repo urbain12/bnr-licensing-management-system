@@ -1,0 +1,65 @@
+<!-- application-create.component.html -->
+<h1 class="page-title">New License Application</h1>
+
+<form class="application-form" [formGroup]="form" (ngSubmit)="submit()">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Institution Information</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="form-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Institution Name</mat-label>
+        <input matInput formControlName="institutionName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>License Type</mat-label>
+        <mat-select formControlName="licenseType">
+          <mat-option value="COMMERCIAL_BANK">Commercial Bank</mat-option>
+          <mat-option value="MICROFINANCE">Microfinance</mat-option>
+          <mat-option value="PAYMENT_SERVICE_PROVIDER">
+            Payment Service Provider
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Business Address</mat-label>
+        <textarea
+          matInput
+          rows="4"
+          formControlName="businessAddress"
+        ></textarea>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Supporting Documents</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <app-document-upload
+        (filesChanged)="onFilesChanged($event)"
+      ></app-document-upload>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="error-text" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <div class="actions">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="loading"
+    >
+      <span *ngIf="!loading">Submit Application</span>
+      <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+    </button>
+  </div>
+</form>
