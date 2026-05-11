@@ -48,6 +48,8 @@ Create database:
 
 ```sql
 CREATE DATABASE bnr_exam;
+
+Update database credentials in application.yml if needed
 ```
 
 Update `src/main/resources/application.yml`: ddl-auto: validate to ddl-auto: none
